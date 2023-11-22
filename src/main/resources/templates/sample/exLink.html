@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--숫자 형식 지정-->
+<ul>
+    <li th:each="dto : ${list}">
+        [[${#numbers.formatInteger(dto.sno, 3)}]]
+    </li>
+</ul>
+
+<!-- 날짜 및 시간에 형식지정 -->
+<ul>
+    <li th:each="dto : ${list}">
+        [[${dto.sno}]] --- [[${#temporals.format(dto.regTime, 'yyyy/MM/dd')}]]
+    </li>
+</ul>
+
+<ul>
+    <li th:each="dto : ${list}">
+        [[${dto.sno}]] --- [[${#temporals.format(dto.regTime, 'hh:mm:ss a')}]]
+    </li>
+</ul>
+
+<!--
+1. th:href="/sample/exView"
+2. th:href="/sample/exView?sno=1"
+3. th:href="/sample/exView/1"
+-->
+    <ul>
+        <li th:each="dto : ${list}">
+            <a th:href="@{/sample/exView/{sno}(sno=${dto.sno})}">[[${dto}]]</a>
+        </li>
+    </ul>
+</body>
+</html>
