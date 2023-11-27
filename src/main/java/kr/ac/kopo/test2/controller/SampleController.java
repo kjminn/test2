@@ -58,7 +58,7 @@ public class SampleController {
         log.info("ex3가 실행됩니다.");
     }
 
-    @GetMapping("/exLayout1")
+    @GetMapping({"/exLayout1", "/exSidebar"})
     public void exLayout1(){
         log.info("exLayout1이 실행됩니다.");
     }
